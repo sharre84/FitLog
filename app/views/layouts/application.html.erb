@@ -5,15 +5,44 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
+  <nav class="navbar navbar-inverse">
+
+
+  <% flash.each do |message_type, message| %>
+   <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
   <% if logged_in? %>
+  <%= current_user.name %>
   <%= link_to "Logout", logout_path, {method: "DELETE"} %>
   <% else %>
       <%= link_to "Login", new_session_path %>
-  <% end %>
+  <% end %> </div>
+  </nav>
 <%= yield %>
 
+
+
+<div class="container">
+
+</div>
+<style>
+.navbar {
+  color: white;
+  min-height: 30px;
+  border-radius: 0px;
+}
+.jumbotron {
+  text-align: center;
+}
+.index-image {
+  text-align: center;
+}
+
+
+</style>
 </body>
 </html>
