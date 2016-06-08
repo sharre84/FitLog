@@ -8,6 +8,12 @@ Rails.application.routes.draw do
 
   delete '/logout' => 'sessions#destroy', as: :logout
 
+  get 'workouts/new' => 'workouts#new'
+
+  get 'workouts/show'
+
+  get 'workouts/edit'
+
   get 'sessions/new'
 
   get 'sessions/create'

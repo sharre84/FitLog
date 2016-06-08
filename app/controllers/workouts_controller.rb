@@ -1,4 +1,6 @@
 class WorkoutsController < ApplicationController
+  before_action :find_workout, only: [:show, :edit, :update, :destroy]
+
 def index
 end
 
@@ -6,12 +8,16 @@ def show
 end
 
 def new
-  @workout = Workout.new(workout_params)
+  @workout = Workout.new
+end
+
+  def create
+    @workout = Workout.new(workout_params)
   if @workout.save
     redirect_to @workout
   else
     render 'new'
-  end
+    end
   end
 
   def edit
@@ -24,11 +30,12 @@ def new
   end
 
   private
-  
+
   def workout_params
   params.require(:workout).permit(:date, :workout, :length)
-end
+  end
 
 def find_workout
-end
+  @workout = Workout.find(params[:id])
+  end
 end
