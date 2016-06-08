@@ -2,38 +2,51 @@
 <html>
 <head>
   <title>FitLog</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
   <nav class="navbar navbar-inverse">
 
-
   <% flash.each do |message_type, message| %>
    <div class="alert alert-<%= message_type %>"><%= message %></div>
   <% end %>
+  <div class="container-fluid">
+    <ul class="nav navbar-nav navbar-right">
+<li>
   <% if logged_in? %>
-  <%= current_user.name %>
-  <%= link_to "Logout", logout_path, {method: "DELETE"} %>
+  <%= link_to current_user.email, users_path %></li></ul>
+<ul class="nav navbar-nav navbar-left">
+<li>  <%= link_to "Logout", logout_path, {method: "DELETE"} %>
   <% else %>
       <%= link_to "Login", new_session_path %>
-  <% end %> </div>
-  </nav>
+  <% end %></li>
+  </ul>
+</div>
+</nav>
+
 <%= yield %>
-
-
 
 <div class="container">
 
 </div>
+<nav class="navbar navbar-inverse navbar-fixed-bottom"><ul><li>Copyright (c) 2016 by Shahrooz Hedayati. All Rights Reserved.</li></u>
+</nav>
 <style>
 .navbar {
   color: white;
-  min-height: 30px;
   border-radius: 0px;
+}
+.navbar-fixed-bottom {
+  text-align: center;
+  min-height: 30px;
+
 }
 .jumbotron {
   text-align: center;
@@ -41,7 +54,9 @@
 .index-image {
   text-align: center;
 }
-
+ul {
+  list-style: none;
+}
 
 </style>
 </body>
