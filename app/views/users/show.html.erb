@@ -1,1 +1,14 @@
-<h1>Start tracking your workout!</h1>
+<div class="container">
+
+
+
+<h1>Track your workout!</h1>
+<% @user.workouts.each do |w| %>
+  <h3><%= w.workout %></h3>
+  <ul>
+    <li>Date: <%= w.date %></li>
+    <li>Length: <%= w.length %> </li>
+  </ul>
+<% end %>
+<%= link_to 'Add A Workout', new_workout_path %>
+</div>

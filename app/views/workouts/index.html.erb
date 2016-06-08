@@ -1,1 +1,13 @@
+<div class="container">
+
+
 <h1>This is the workouts#index page</h1>
+<ul>
+  <li>
+<% @workouts.each do |workout| %>
+  <%= link_to workout.date, workout %>
+  <%= workout['workout'] %>
+  <% end %>
+</li>
+</ul>
+</div>

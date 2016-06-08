@@ -1,11 +1,17 @@
+<div class="workout">
+  <%= @workout.workout %><br>
+  <%= @workout.length %><br>
+  <%= @workout.date %><br>
+</div>
 
-<div class="container">
+<div class="exercises">
+<h2>Exercises</h2>
+<%= render @workout.exercises %>
 
+<h3>Add an exercise</h3>
+<%= render 'exercises/form' %>
 
-<% @workout %>
-
-    <%= @workout.workout %><br>
-    <%= @workout.length %><br>
-    <%= @workout.date %><br>
-
+    <%= link_to "Back", root_path %> |
+    <%= link_to "Edit", edit_workout_path(@workout) %> |
+    <%= link_to "Delete", workout_path(@workout), method: :delete, data: { confirm: "Are you sure?" } %>
 </div>
