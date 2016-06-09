@@ -16,6 +16,7 @@ end
     @workout = Workout.new(workout_params)
     @workout.user = current_user
     if @workout.save
+      flash[:success] = 'You have created a new workout!'
       redirect_to current_user
     else
       render 'new'
@@ -44,7 +45,7 @@ end
   private
 
   def workout_params
-    params.require(:workout).permit(:date, :workout, :length)
+    params.require(:workout).permit(:date, :workout, :length, :comment)
   end
 
 def find_workout

@@ -1,8 +1,9 @@
 <div class="container">
 
   <h2><%= @workout.workout %></h2>
-  <h3><%= @workout.length %><br>
-  <%= @workout.date.to_formatted_s(:short) %></h3>
+  <h4><%= @workout.length %><br>
+  <%= @workout.comment %><br>
+  <%= @workout.date.to_formatted_s(:short) %></h4>
 
     <%= link_to "Back", root_path %> |
     <%= link_to "Edit", edit_workout_path(@workout) %> |

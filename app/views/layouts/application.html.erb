@@ -15,9 +15,6 @@
 
   <nav class="navbar navbar-inverse">
     <a class="navbar-brand" href="/workouts">FitLog</a>
-    <% flash.each do |message_type, message| %>
-     <div class="alert alert-<%= message_type %>"><%= message %></div>
-    <% end %>
     <div class="container-fluid">
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
@@ -34,7 +31,14 @@
       </ul>
     </nav>
     <div class="container">
-      <%= yield %>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <% flash.each do |message_type, message| %>
+           <div class="alert alert-<%= message_type %>"><%= message %></div>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
     </div>
 
     <nav class="navbar navbar-inverse navbar-fixed-bottom">
