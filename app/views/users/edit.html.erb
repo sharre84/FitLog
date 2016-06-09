@@ -1,2 +1,9 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+  <%= @user.name %><br>
+  <%= @user.email %><br>
+  <br>
+
+    <%= link_to "Back", root_path %> |
+    <%= link_to "Edit", edit_user_path(@user) %> |
+    <%= link_to "Delete", user_path(@user), method: :delete, data: { confirm: "Are you sure?" } %>
+</div>

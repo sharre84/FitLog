@@ -21,13 +21,23 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
   end
 
+  def edit
+    if @user.update(user_params[:id])
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
+    if @user.destroy
+      redirect_to current_user
+    else
+      render :edit
+    end
   end
 end
 

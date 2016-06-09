@@ -12,55 +12,36 @@
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
-  <nav class="navbar navbar-inverse"><a class="navbar-brand" href="#">FitLog</a>
 
-  <% flash.each do |message_type, message| %>
-   <div class="alert alert-<%= message_type %>"><%= message %></div>
-  <% end %>
-  <div class="container-fluid">
-    <ul class="nav navbar-nav navbar-right">
-<li>
-  <% if logged_in? %>
-  <%= link_to current_user.email, users_path %>
-<button type="button" class="btn btn-default navbar-btn"><%= link_to "Logout", logout_path, {method: "DELETE"} %></button></li></ul>
+  <nav class="navbar navbar-inverse">
+    <a class="navbar-brand" href="#">FitLog</a>
+    <% flash.each do |message_type, message| %>
+     <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+          <li><%= link_to current_user.email, users_path %></li>
+          <li><%= link_to "Logout", logout_path, {method: "DELETE"} %></li>
+        <% else %>
+          <li><%= link_to "Login", new_session_path %></li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-left">
+        <% if logged_in? %>
+          <li><%= link_to "Add a workout", new_workout_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
 
-<ul class="nav navbar-nav navbar-left">
-<li>
-    <%= link_to "Add a workout", new_workout_path, class: "btn btn-default" %>
-  <% else %>
-      <%= link_to "Login", new_session_path %>
-  <% end %></li>
-  </ul>
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
+      <ul>
+        <li>Copyright (c) 2016 by Shahrooz Hedayati. All Rights Reserved.</li>
+      </ul>
+    </nav>
 
-</nav>
-</div>
-<%= yield %>
-
-<div class="container">
-
-</div>
-<nav class="navbar navbar-inverse navbar-fixed-bottom"><ul><li>Copyright (c) 2016 by Shahrooz Hedayati. All Rights Reserved.</li></u>
-</nav>
-<style>
-.navbar {
-  color: white;
-  border-radius: 0px;
-}
-.navbar-fixed-bottom {
-  text-align: center;
-  min-height: 30px;
-}
-.jumbotron {
-  text-align: center;
-}
-.index-image {
-  text-align: center;
-}
-ul {
-  list-style: none;
-}
-
-
-</style>
 </body>
 </html>

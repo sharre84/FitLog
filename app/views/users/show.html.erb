@@ -1,17 +1,25 @@
 <div class="container-fluid">
-
-<div class="row">
-<div class="col-md-12">
+<div id="gradient-test">
 
 
-<h1>Track your workout!</h1>
+<h1>Track your workout <%= @user.name %>!</h1>
+
 <% @user.workouts.each do |w| %>
+
+
   <h3><%= w.workout %></h3>
-  <ul>
-    <li>Date: <%= w.date.to_formatted_s(:short) %></li>
-    <li>Length: <%= w.length %> </li>
-<% end %><br>
+
+    Date: <%= w.date.to_formatted_s(:short) %><br>
+    Length: <%= w.length %>
+<br>
+  <%= link_to 'Edit', edit_workout_path(w) %> |
+  <%= link_to "Delete", workout_path(w), method: :delete, data: { confirm: "Are you sure?" } %>
+
+<% end %>
+
+<br><br>
 <%= link_to "Create a new workout", new_workout_path, class: "btn btn-info btn-lg" %>
-</div>
-</div>
+
+
+  </div>
 </div>
