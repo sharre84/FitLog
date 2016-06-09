@@ -12,7 +12,7 @@
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-inverse"><a class="navbar-brand" href="#">FitLog</a>
 
   <% flash.each do |message_type, message| %>
    <div class="alert alert-<%= message_type %>"><%= message %></div>
@@ -21,16 +21,19 @@
     <ul class="nav navbar-nav navbar-right">
 <li>
   <% if logged_in? %>
-  <%= link_to current_user.email, users_path %></li></ul>
+  <%= link_to current_user.email, users_path %>
+<button type="button" class="btn btn-default navbar-btn"><%= link_to "Logout", logout_path, {method: "DELETE"} %></button></li></ul>
+
 <ul class="nav navbar-nav navbar-left">
-<li>  <%= link_to "Logout", logout_path, {method: "DELETE"} %>
+<li>
+    <%= link_to "Add a workout", new_workout_path, class: "btn btn-default" %>
   <% else %>
       <%= link_to "Login", new_session_path %>
   <% end %></li>
   </ul>
-</div>
-</nav>
 
+</nav>
+</div>
 <%= yield %>
 
 <div class="container">
@@ -46,7 +49,6 @@
 .navbar-fixed-bottom {
   text-align: center;
   min-height: 30px;
-
 }
 .jumbotron {
   text-align: center;
@@ -57,6 +59,7 @@
 ul {
   list-style: none;
 }
+
 
 </style>
 </body>

@@ -5,7 +5,7 @@
 <ul>
   <li>
 <% @workouts.each do |workout| %>
-  <%= link_to workout.date, workout %>
+  <%= link_to workout.date.to_formatted_s(:short), workout %>
   <%= workout['workout'] %>
   <% end %>
 </li>

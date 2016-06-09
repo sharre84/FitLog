@@ -1,15 +1,7 @@
-<div class="workout">
+<div class="container">
   <%= @workout.workout %><br>
   <%= @workout.length %><br>
-  <%= @workout.date %><br>
-</div>
-
-<div class="exercises">
-<h2>Exercises</h2>
-<%= render @workout.exercises %>
-
-<h3>Add an exercise</h3>
-<%= render 'exercises/form' %>
+  <%= @workout.date.to_formatted_s(:short) %><br>
 
     <%= link_to "Back", root_path %> |
     <%= link_to "Edit", edit_workout_path(@workout) %> |
