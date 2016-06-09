@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :authorize, only: [:show]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+
 
   def index
     @users = User.all
@@ -22,14 +24,15 @@ class UsersController < ApplicationController
   end
 
   def update
-  end
-
-  def edit
-    if @user.edit(user_params[:id])
+    if @user.update(user_params)
       redirect_to @user
     else
       render 'edit'
     end
+  end
+
+  def edit
+
   end
 
   def destroy
@@ -42,6 +45,10 @@ class UsersController < ApplicationController
 end
 
 private
+
+def set_user
+  @user = User.find(params[:id])
+end
 def user_params
   params.require(:user).permit(:name,:email,:password,:password_confirmation)
 end
