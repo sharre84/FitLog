@@ -39,8 +39,7 @@ class UsersController < ApplicationController
 
   def destroy
     if @user.destroy
-
-      redirect_to current_user
+      redirect_to root_path
     else
       render :edit
     end
