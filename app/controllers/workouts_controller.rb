@@ -28,7 +28,8 @@ end
 
   def update
     if @workout.update(workout_params)
-      redirect_to @workout
+      flash[:success] = 'You have updated your workout!'
+      redirect_to current_user
     else
       render 'edit'
     end
@@ -36,6 +37,7 @@ end
 
   def destroy
     if @workout.destroy
+      flash[:danger] = 'You have deleted the workout!'
       redirect_to current_user
     else
       render :edit
