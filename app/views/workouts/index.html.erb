@@ -1,13 +1,11 @@
 <div class="container">
-
-
-<h1>All the workouts listed below:</h1>
-<ul>
-  <li>
+  <h1>All the workouts listed below:</h1>
+  <ul>
+    <li>
 <% @workouts.each do |workout| %>
   <%= link_to workout.date.to_formatted_s(:short), workout %>
   <%= workout['workout'] %><br>
   <% end %>
-</li>
-</ul>
+    </li>
+  </ul>
 </div>

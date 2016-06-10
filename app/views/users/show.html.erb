@@ -1,8 +1,6 @@
 <div class="container-fluid">
 <h1>Track your workout <%= @user.name %>!</h1>
-
 <% @user.workouts.each do |w| %>
-
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title"><%= w.workout %></h3>
@@ -18,7 +16,5 @@
   </div>
 </div>
 <% end %>
-
 <%= link_to "Create a new workout", new_workout_path, class: "btn btn-info btn-lg" %>
-
 </div>
