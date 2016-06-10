@@ -3,7 +3,6 @@ class WorkoutsController < ApplicationController
 
 def index
   @workouts = Workout.all
-  # .order('created_at DESC')
 end
 
 def show

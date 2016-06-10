@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :authorize, only: [:show]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-
   def index
     @users = User.all
     redirect_to current_user if logged_in?
